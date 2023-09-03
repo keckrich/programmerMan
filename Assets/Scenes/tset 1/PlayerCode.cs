@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCode : MonoBehaviour
 {
     public GameObject parentObject;  // Assign this from the editor or from another script
+    public GameObject ancher;  // Assign this from the editor or from another script
+    public GameObject playerChar;  // Assign this from the editor or from another script
+    public GameObject movePoint;  // Assign this from the editor or from another script
     private DraggableItem grandchild;
+
     void Start()
     {
 
@@ -23,6 +28,12 @@ public class PlayerCode : MonoBehaviour
     {
         List<DraggableItem> grandchildScripts = GetDragableItems();
         StartCoroutine(CallFunctionOnItems(grandchildScripts));
+    }
+
+    public void OnRestButton()
+    {
+        playerChar.transform.position = ancher.transform.position;
+        movePoint.transform.position = ancher.transform.position;
     }
 
     private IEnumerator CallFunctionOnItems(List<DraggableItem> grandchildScripts)
@@ -63,5 +74,10 @@ public class PlayerCode : MonoBehaviour
         }
 
         return grandchildScripts;
+    }
+
+    public void MoveToScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
     }
 }
