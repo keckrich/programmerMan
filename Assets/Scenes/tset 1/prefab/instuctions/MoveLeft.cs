@@ -12,7 +12,7 @@ public class MoveLeft : Instruction
     {
         GameObject newMove = Instantiate(moveableItem, transform.position, transform.rotation, t);
         DraggableItem draggableItem = newMove.GetComponent<DraggableItem>();
-        draggableItem.text.text = "Move Lef";
-        draggableItem.onExecute = movement.moveLeft;
+        draggableItem.text.text = "Move Left";
+        draggableItem.onExecute = movement.MoveLeft;
     }
 }

@@ -12,19 +12,48 @@ public class CustomInspector : Editor
         Movement grid = (Movement)target;
         if (GUILayout.Button("Move Up"))
         {
-            grid.moveUp();
+            grid.MoveUp();
         }
         if (GUILayout.Button("Move Down"))
         {
-            grid.moveDown();
+            grid.MoveDown();
         }
         if (GUILayout.Button("Move Right"))
         {
-            grid.moveRight();
+            grid.MoveRight();
         }
         if (GUILayout.Button("Move Left"))
         {
-            grid.moveLeft();
+            grid.MoveLeft();
+        }
+
+    }
+}
+
+[CustomEditor(typeof(NewPlayer))]
+public class CustomInspecto2r : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+        //EditorGUILayout.LabelField("Hey!");
+
+        NewPlayer grid = (NewPlayer)target;
+        if (GUILayout.Button("Move Up"))
+        {
+            grid.WalkForward();
+        }
+        if (GUILayout.Button("Move Down"))
+        {
+            grid.WalkDown();
+        }
+        if (GUILayout.Button("Move Right"))
+        {
+            grid.WalkRight();
+        }
+        if (GUILayout.Button("Move Left"))
+        {
+            grid.WalkLeft();
         }
 
     }

@@ -13,6 +13,6 @@ public class MoveRight : Instruction
         GameObject newMove = Instantiate(moveableItem, transform.position, transform.rotation, t);
         DraggableItem draggableItem = newMove.GetComponent<DraggableItem>();
         draggableItem.text.text = "Move Right";
-        draggableItem.onExecute = movement.moveRight;
+        draggableItem.onExecute = movement.MoveRight;
     }
 }

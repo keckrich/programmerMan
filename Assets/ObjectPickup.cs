@@ -10,6 +10,7 @@ public class PickaxePickup : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.tag);
         if (other.tag == "Player" && gameObject.name == "Pickaxe")
         {
             gameObject.SetActive(false);

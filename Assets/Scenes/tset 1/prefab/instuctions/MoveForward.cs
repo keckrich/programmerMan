@@ -13,6 +13,6 @@ public class MoveForward : Instruction
         GameObject newMove = Instantiate(moveableItem, transform.position, transform.rotation, t);
         DraggableItem draggableItem = newMove.GetComponent<DraggableItem>();
         draggableItem.text.text = "Move Forward";
-        draggableItem.onExecute = movement.moveUp;
+        draggableItem.onExecute = movement.MoveUp;
     }
 }

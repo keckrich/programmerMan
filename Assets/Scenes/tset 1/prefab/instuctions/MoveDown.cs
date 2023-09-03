@@ -13,6 +13,6 @@ public class MoveDown : Instruction
         GameObject newMove = Instantiate(moveableItem, transform.position, transform.rotation, t);
         DraggableItem draggableItem = newMove.GetComponent<DraggableItem>();
         draggableItem.text.text = "Move Down";
-        draggableItem.onExecute = movement.moveDown;
+        draggableItem.onExecute = movement.MoveDown;
     }
 }

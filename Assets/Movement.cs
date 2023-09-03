@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Transform movePoint;
+    public Tilemap tilemap;
+
 
     public LayerMask whatStopsMovement;
     // Start is called before the first frame update
@@ -18,19 +21,19 @@ public class Movement : MonoBehaviour
         // movePoint.parent = null; //makes it so the movepoint does not translate based on player object
     }
 
-    public void moveUp()
+    public void MoveUp()
     {
         movePosY = 1;
     }
-    public void moveDown()
+    public void MoveDown()
     {
         movePosY = -1;
     }
-    public void moveRight()
+    public void MoveRight()
     {
         movePosX = 1;
     }
-    public void moveLeft()
+    public void MoveLeft()
     {
         movePosX = -1;
     }
@@ -46,7 +49,7 @@ public class Movement : MonoBehaviour
 
             if (Mathf.Abs(movePosX) == 1f)
             {
-                if (!Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(movePosX, 0f, 0f), .2f, whatStopsMovement))
+                if (!HasTileCollistion(movePosX, 0))
                 {
                     movePoint.localPosition += new Vector3(movePosX, 0f, 0f);
                 }
@@ -56,7 +59,7 @@ public class Movement : MonoBehaviour
             else if (Mathf.Abs(movePosY) == 1f)
             {
 
-                if (!Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, movePosY, 0f), .2f, whatStopsMovement))
+                if (!HasTileCollistion(0, movePosY))
                 {
                     movePoint.localPosition += new Vector3(0f, movePosY, 0f);
                     Debug.Log($"Move Point = {movePoint.localPosition}");
@@ -67,5 +70,13 @@ public class Movement : MonoBehaviour
         movePosX = 0;
         movePosY = 0;
 
+    }
+
+    public bool HasTileCollistion(int x, int y)
+    {
+        // Convert the world point to cell position
+        Vector3Int cellPosition = tilemap.WorldToCell(transform.position) + new Vector3Int(x, y);
+        // Check if the cell contains a tile
+        return tilemap.HasTile(cellPosition);
     }
 }
