@@ -15,7 +15,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        movePoint.parent = null; //makes it so the movepoint does not translate based on player object
+        // movePoint.parent = null; //makes it so the movepoint does not translate based on player object
     }
 
     public void moveUp()
@@ -40,30 +40,30 @@ public class Movement : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed * Time.deltaTime);
-        
-        if(Vector3.Distance(transform.position, movePoint.position) <= .05f)
+
+        if (Vector3.Distance(transform.localPosition, movePoint.localPosition) <= .05f)
         {
-            
-            if(Mathf.Abs(movePosX) == 1f)
+
+            if (Mathf.Abs(movePosX) == 1f)
             {
-                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(movePosX, 0f, 0f), .2f, whatStopsMovement))
+                if (!Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(movePosX, 0f, 0f), .2f, whatStopsMovement))
                 {
-                    movePoint.position += new Vector3(movePosX, 0f, 0f);
+                    movePoint.localPosition += new Vector3(movePosX, 0f, 0f);
                 }
-                
+
             }
             //Might have to add player offset depending on sprite
-            else if(Mathf.Abs(movePosY) == 1f)
+            else if (Mathf.Abs(movePosY) == 1f)
             {
-                
-                if(!Physics2D.OverlapCircle(movePoint.position + new Vector3(0f, movePosY, 0f), .2f, whatStopsMovement))
+
+                if (!Physics2D.OverlapCircle(movePoint.localPosition + new Vector3(0f, movePosY, 0f), .2f, whatStopsMovement))
                 {
-                        movePoint.position += new Vector3(0f, movePosY, 0f);
-                        Debug.Log($"Move Point = {movePoint.position}");
+                    movePoint.localPosition += new Vector3(0f, movePosY, 0f);
+                    Debug.Log($"Move Point = {movePoint.localPosition}");
                 }
             }
         }
-        
+
         movePosX = 0;
         movePosY = 0;
 

@@ -21,7 +21,6 @@ public class PlayerCode : MonoBehaviour
 
     public void OnStartButton()
     {
-        Debug.Log("clocked");
         List<DraggableItem> grandchildScripts = GetDragableItems();
         StartCoroutine(CallFunctionOnItems(grandchildScripts));
     }
@@ -48,11 +47,9 @@ public class PlayerCode : MonoBehaviour
         // Traverse all children
         foreach (Transform child in parentObject.transform)
         {
-            Debug.Log("child");
             // Traverse all grandchildren of each child
             foreach (Transform grandchild in child)
             {
-                Debug.Log("grandchild");
 
                 // Try to get the script component on the grandchild
                 DraggableItem script = grandchild.GetComponent<DraggableItem>();
