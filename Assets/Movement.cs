@@ -6,10 +6,8 @@ public class Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public Transform movePoint;
-
     public LayerMask whatStopsMovement;
-    // Start is called before the first frame update
-
+    public LayerMask CanRemove;
     public int movePosX;
     public int movePosY;
 
@@ -33,6 +31,12 @@ public class Movement : MonoBehaviour
     public void moveLeft()
     {
         movePosX = -1;
+    }
+
+
+    public void mineBlock()
+    {
+
     }
 
 
@@ -66,6 +70,14 @@ public class Movement : MonoBehaviour
         
         movePosX = 0;
         movePosY = 0;
+        
+        // if(Physics2D.OverlapCircle(transform.position, 2f, CanRemove))
+        // {
+        //     Debug.Log($"Move Point");
+        // }
+
+
+
 
     }
 }

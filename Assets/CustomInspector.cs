@@ -10,6 +10,7 @@ public class CustomInspector : Editor
         //EditorGUILayout.LabelField("Hey!");
 
         Movement grid = (Movement)target;
+        
         if(GUILayout.Button("Move Up"))
         {
             grid.moveUp();
@@ -25,6 +26,11 @@ public class CustomInspector : Editor
         if(GUILayout.Button("Move Left"))
         {
             grid.moveLeft();
+        }
+
+        if(GUILayout.Button("Break Block"))
+        {
+            //
         }
 
     }
