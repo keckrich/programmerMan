@@ -39,6 +39,6 @@ public class Instruction : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     void Start()
     {
-        movement = GameObject.FindGameObjectWithTag("player").GetComponent<Movement>();
+        movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
 }
